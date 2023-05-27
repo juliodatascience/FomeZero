@@ -136,10 +136,11 @@ df_best_restaurants = df1.loc[:,columns].groupby(['restaurant_id','restaurant_na
 st.table(df_best_restaurants)
 
 st.markdown('### Top 10 Restaurantes')
-columns_st = ['restaurant_id', 'restaurant_name', 'country_name', 'city', 'cuisines', 'aggregate_rating', 'votes']
+columns = ['restaurant_id','restaurant_name','country_name','city','cuisines','average_cost_for_two','aggregate_rating','votes']
 
-df_cuisines = df1.loc[:,columns_st].groupby(['restaurant_id','restaurant_name', 'city']).mean().sort_values(by= ['aggregate_rating', 'restaurant_id'], ascending = [False,True]).reset_index().head(10)
-st.table(df_cuisines)
+
+df_best_restaurants = df1.loc[:,columns].sort_values(by= ['aggregate_rating', 'restaurant_id'], ascending = [False,True]).head(10)
+st.table(df_best_restaurants)
 
 col1,col2 = st.columns(2)
 
